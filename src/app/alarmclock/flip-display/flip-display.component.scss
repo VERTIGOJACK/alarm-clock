@@ -1,0 +1,170 @@
+@import "../../../../assets/scss/digital-clock";
+@import "../../../../assets/scss/mixins";
+
+@mixin animation($name: "flip_down", $duration: 333ms, $timing: "ease-in-out") {
+  @keyframes flip_down {
+    0% {
+      transform-origin: bottom;
+    }
+    100% {
+      transform-origin: bottom;
+      transform: rotateX(-180deg);
+    }
+  }
+  animation-name: $name;
+  animation-duration: $duration;
+  animation-timing-function: $timing;
+  animation-fill-mode: forwards;
+}
+
+.container {
+  perspective: 1600px;
+  height: $height;
+  width: $width;
+  color: $font-color;
+  transform-style: preserve-3d;
+  @include kirby-font();
+}
+
+.number-container {
+  position: absolute;
+  display: flex;
+  transform-style: preserve-3d;
+  padding: 0;
+  width: 100%;
+  height: 50%;
+  font-size: $font-size;
+
+  .overflow {
+    display: flex;
+    height: calc($height / 2);
+    overflow: hidden;
+  }
+
+  .face {
+    width: 100%;
+  }
+
+  .overlay {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+  }
+
+  &.upper {
+    z-index: -1;
+    top: -1px;
+
+    .face {
+      border-radius: $border-radius $border-radius 0px 0px;
+      background-color: $background-color-darker;
+    }
+    .overlay {
+      border-radius: $border-radius $border-radius 0px 0px;
+      background: $top-gradient;
+    }
+    .overflow {
+      flex-direction: column;
+      color: $font-color-darker;
+    }
+
+    .number {
+      -webkit-text-stroke: 2px $outline-color-darker;
+    }
+  }
+
+  &.flipper {
+    .front {
+      border-radius: $border-radius $border-radius 0px 0px;
+      background-color: $background-color-darker;
+      .overlay {
+        border-radius: $border-radius $border-radius 0px 0px;
+        background: $top-gradient;
+      }
+
+      .overflow {
+        flex-direction: column;
+        color: $font-color-darker;
+      }
+
+      .number {
+        -webkit-text-stroke: 2px $outline-color-darker;
+      }
+    }
+    .back {
+      border-radius: 0px 0px $border-radius $border-radius;
+
+      .overlay {
+        border-radius: 0px 0px $border-radius $border-radius;
+        background: $bot-gradient;
+      }
+
+      .overflow {
+        flex-direction: column-reverse;
+      }
+
+      .number {
+        -webkit-text-stroke: 2px $outline-color;
+      }
+    }
+  }
+
+  &.lower {
+    z-index: -1;
+    top: 50%;
+    .face {
+      border-radius: 0px 0px $border-radius $border-radius;
+    }
+
+    .overlay {
+      background: $bot-gradient;
+      border-radius: 0px 0px $border-radius $border-radius;
+    }
+
+    .overflow {
+      flex-direction: column-reverse;
+    }
+
+    .number {
+      -webkit-text-stroke: 2px $outline-color;
+    }
+  }
+
+  .face {
+    position: absolute; /* Ensure overlap */
+    background: $background-color;
+
+    &.front {
+      transform: translateZ(1px); /* Front moves forward */
+    }
+
+    &.back {
+      transform: rotateY(180deg) rotateZ(180deg) translateZ(1px);
+    }
+  }
+}
+
+p {
+  display: flex;
+  align-items: center;
+  margin: 0px;
+
+  max-height: 100%;
+  text-align: center;
+}
+
+.number {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: $height;
+}
+
+.flip-down {
+  @include animation("flip_down", 0.5s, "ease-in-out");
+}
+
+.stay-down {
+  transform-origin: bottom;
+  transform: rotateX(-180deg);
+}

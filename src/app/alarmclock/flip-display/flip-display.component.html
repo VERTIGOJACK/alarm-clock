@@ -1,0 +1,51 @@
+
+<section class="container">
+  <div class="number-container upper">
+    <div class="face">
+      <div class="overflow">
+        <div class="overlay"></div>
+        <div class="number">
+          <p>{{ next }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    #flipper
+    class="number-container flipper flip-down"
+    (animationend)="animationEnd($event)"
+  >
+    <div class="back face">
+      <!-- <div *ngFor="let number of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+        <p class="number lower">{{ number }}</p>
+      </div> -->
+      <div class="overflow">
+        <div class="overlay"></div>
+        <div class="number">
+          <p>{{ next }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="front face">
+      <div class="overflow">
+        <!-- <div *ngFor="let number of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+        <p class="number lower">{{ number }}</p>
+      </div> -->
+        <div class="overlay"></div>
+        <div class="number">
+          <p>{{ last }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="number-container lower">
+    <div class="face">
+      <div class="overflow">
+        <div class="overlay"></div>
+        <div class="number">
+          <p>{{ last }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

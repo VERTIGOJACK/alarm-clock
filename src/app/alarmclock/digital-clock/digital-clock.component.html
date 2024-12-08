@@ -1,0 +1,39 @@
+<div class="outer">
+  <div class="wrapper">
+    <div
+      #background
+      class="background layer"
+      (animationend)="animationEnd($event)"
+    ></div>
+    <div
+      #midground
+      class="midground layer"
+      (animationend)="animationEnd($event)"
+    >
+      <img class="back hero" src="kirbylandia.png" alt="" />
+    </div>
+    <div
+      #foreground
+      class="foreground layer"
+      (animationend)="animationEnd($event)"
+    >
+      <!-- <img class="front hero" src="starcutter.png" alt="" /> -->
+      <div class="clockface">
+        <flip-display [current]="getTens(hours)"></flip-display>
+        <flip-display [current]="getOnes(hours)"></flip-display>
+        <div class="divider">
+          <div class="dot"></div>
+          <div class="dot"></div>
+        </div>
+        <flip-display [current]="getTens(minutes)"></flip-display>
+        <flip-display [current]="getOnes(minutes)"></flip-display>
+        <div class="divider">
+          <div class="dot"></div>
+          <div class="dot"></div>
+        </div>
+        <flip-display [current]="getTens(seconds)"></flip-display>
+        <flip-display [current]="getOnes(seconds)"></flip-display>
+      </div>
+    </div>
+  </div>
+</div>

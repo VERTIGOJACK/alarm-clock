@@ -1,0 +1,28 @@
+<section class="container">
+  <div class="face">
+    <div class="background"></div>
+    <div class="middle"></div>
+    <div class="hands-wrapper">
+      <div #seconds class="hand hand-seconds"></div>
+      <div #alarm class="hand hand-alarm"></div>
+      <div #hours class="hand hand-hours">
+        <div class="hand-icon magolor-fix">
+          <img src="magolor.gif " alt="" />
+        </div>
+      </div>
+      <div #minutes class="hand hand-minutes">
+        <div class="hand-icon kirby-fix">
+          <img src="kirby.gif" alt="" />
+        </div>
+      </div>
+    </div>
+    <div class="numbers container">
+      <p
+        *ngFor="let number of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]"
+        class="hour"
+      >
+        {{ number }}
+      </p>
+    </div>
+  </div>
+</section>

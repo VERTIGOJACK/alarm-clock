@@ -1,0 +1,26 @@
+@import "./colors";
+
+$height: 150px;
+$width: 100px;
+$animation-speed: 0.3s;
+$font-size: 9rem;
+
+$font-color: $secondary;
+$outline-color: $secondary-dark;
+$background-color: $tertiary-dark;
+
+$font-color-darker: darken($font-color, 15%);
+$background-color-darker: darken($background-color, 15%);
+$outline-color-darker: darken($outline-color, 15%);
+
+$border-radius: 1rem;
+$top-gradient: linear-gradient(
+  0deg,
+  rgba(0, 0, 0, 0.5) 0%,
+  rgba(0, 0, 0, 0) 40%
+);
+$bot-gradient: linear-gradient(
+  180deg,
+  rgba(0, 0, 0, 0.5) 0%,
+  rgba(0, 0, 0, 0) 40%
+);
